@@ -1,0 +1,69 @@
+1.云管理桌面 http://219.224.135.125/
+2.HDMI接口 VGA接口
+3.hashtagn.井号(#)标签(微博twitter中用来标注线索主题的标签)
+4.echars设置title距离下面的高度用参数grid:{ y:80}
+5.mongo导出csv格式命令行
+/usr/bin/mongoimport -d 54api_weibo_v2 -c random_weibo -file /home/yuwendong/test/master_to_random_2month.jl
+报错的话可能因为没有指定服务器和端口号
+mongodump
+6.json.dump()字典转成字符串 json.load（）字符串转成字典
+7.财务登录 m1523643 m4882567k#
+8.查看路径下文件大小 ncdu
+9.遍历
+    module_keywords = [("sogou_weixin_search", "keywords_corp_weixin.txt")]
+    keywords_file_list = list(set([v for k, v in module_keywords]))
+    source_website_list = list(set([k for k, v in module_keywords]))
+
+keywords_file_list = ["keywords_corp_weixin.txt"]
+10.搜索结果编码问题
+    for r in results:
+        if 'title' in r:
+           r['title'] = r['title'].encode('utf-8')
+      else:
+         r['title'] = ''.encode('utf-8')
+
+       if 'summary' in r:
+          r['content'] = r['summary'].encode('utf-8')
+      else:
+          r['content'] = r['text'].encode('utf-8')
+
+     esults = duplicate(results)
+11.写文件
+    fw = csv.writer(open(result_path + 'sheqi_weibo_forum_sort_%s_%s_%s.csv' % (sort_field, START_DATETIME, END_DATETIME), 'wb'), delimiter='^')
+    WEIBO_FORUM_KEYS = ['id', 'title', 'content', 'timestamp', 'created_at', 'source_website', 'source_category', 'hot', 'sensi', 'sentiment']
+    fw.writerow(WEIBO_FORUM_KEYS)
+    for r in results:
+        csvrow = []
+        if r['duplicate'] == False:
+            for key in WEIBO_FORUM_KEYS:
+                if 'created_at' == key and 'created_at' not in r and 'datetime' in r:
+                    r['created_at'] = r['datetime']
+                if 'source_category' == key and 'source_category' not in r and 'category' in r:
+                    r['source_category'] = r['category']
+                csvrow.append(_encode_utf8(r[key]))
+
+            fw.writerow(csv)
+12.文件路径下是否存在该文件，没有则新建文件
+	result_path = "./%s-%s/" % (START_DATETIME, END_DATETIME)
+	if not os.path.exists(result_path):
+    	    os.mkdir(result_path)
+13.编码转换问题
+def _encode_utf8(us):
+    if isinstance(us, unicode):
+        us = us.encode('utf-8')
+
+    if not us:
+        us = ''
+
+    if isinstance(us, str):
+        us = us.replace('\n', '')
+
+    return us
+14.python里面import需要找路径 flash里面不需要 
+15.import的文件
+ import os
+ import csv
+ import time
+ import pymongo
+ import sys
+16.
