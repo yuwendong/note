@@ -66,4 +66,25 @@ def _encode_utf8(us):
  import time
  import pymongo
  import sys
-16.
+16.git reset HEAD <file>（撤销提交git add）
+17.设置字体颜色 <font color="#FF0000">as</font>
+18.        updates = {}
+        updates['last_modify'] = time.time()
+        for k, v in boat_item.iteritems():
+            updates[k] = v
+
+        updates_modifier = {'$set': updates}
+19. (遍历转码)for key in source_content:
+         if isinstance(source_content[key],unicode):
+               print 'it is unicode'
+         item_content.append(self.decode_item(source_content[key]))
+
+
+    def decode_item(self, data):
+        try:
+            result = data.encode('utf-8')
+        except:
+            result = data
+        return result
+20.
+
